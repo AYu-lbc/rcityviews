@@ -206,7 +206,11 @@ cityview <- function(name = NULL,
                      filename = NULL,
                      verbose = TRUE,
                      cache = TRUE,
-                     bot = FALSE) {
+                     bot = FALSE,
+                     plot_width = 500,
+                     plot_height = 500,
+                     plot_dpi = 100
+) {
   # Error handling #############################################################
   stopifnot("argument 'zoom' must be a single number > 0" = !is.null(zoom) && is.numeric(zoom) && length(zoom) == 1L && zoom > 0)
   stopifnot("argument 'legend' must be a single logical" = !is.null(legend) && is.logical(legend) && length(legend) == 1L)
@@ -293,10 +297,10 @@ cityview <- function(name = NULL,
     ggplot2::ggsave(
       filename = filename,
       plot = image,
-      height = 500,
-      width = 500,
+      height = plot_height,
+      width = plot_width,
       units = "mm",
-      dpi = 100
+      dpi = plot_dpi
     )
     return(invisible())
   }

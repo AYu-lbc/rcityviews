@@ -754,35 +754,36 @@
   if (!is.null(halftone)) {
     p <- .addHalftone(p, halftone)
   }
-  # Add the city name to the plot ##############################################
-  plotName <- if (is.null(themeOptions[["font"]][["append"]])) city[["name"]] else paste0(themeOptions[["font"]][["append"]], city[["name"]], themeOptions[["font"]][["append"]])
-  if (city[["lat"]] < 0) {
-    lat <- paste0(format(abs(city[["lat"]]), digits = 6), "\u00B0 S")
-  } else {
-    lat <- paste0(format(city[["lat"]], digits = 6), "\u00B0 N")
-  }
-  if (city[["long"]] < 0) {
-    long <- paste0(format(abs(city[["long"]]), digits = 6), "\u00B0 W")
-  } else {
-    long <- paste0(format(city[["long"]], digits = 6), "\u00B0 E")
-  }
-  p <- p + shadowtext::geom_shadowtext(
-    data = data.frame(x = 0.5, y = c(0.93, 0.975), label = c(plotName, city[["country"]])),
-    mapping = ggplot2::aes(x = x, y = y, label = label),
-    size = c(themeOptions[["font"]][["scale"]] * 30, themeOptions[["font"]][["scale"]] * 20),
-    color = themeOptions[["colors"]][["text"]],
-    fontface = themeOptions[["font"]][["face"]],
-    family = themeOptions[["font"]][["family"]],
-    bg.colour = if (!is.null(themeOptions[["colors"]][["textshadow"]])) themeOptions[["colors"]][["textshadow"]] else themeOptions[["colors"]][["background"]]
-  ) + shadowtext::geom_shadowtext(
-    data = data.frame(x = 0.97, y = 0.03, label = paste0(lat, " / ", long)),
-    mapping = ggplot2::aes(x = x, y = y, label = label),
-    size = themeOptions[["font"]][["scale"]] * 15,
-    color = themeOptions[["colors"]][["text"]],
-    family = themeOptions[["font"]][["family"]],
-    bg.colour = if (!is.null(themeOptions[["colors"]][["textshadow"]])) themeOptions[["colors"]][["textshadow"]] else themeOptions[["colors"]][["background"]],
-    hjust = 1
-  )
+  #TODO
+  # Add the city name to the plot ############################################## 
+  # plotName <- if (is.null(themeOptions[["font"]][["append"]])) city[["name"]] else paste0(themeOptions[["font"]][["append"]], city[["name"]], themeOptions[["font"]][["append"]])
+  # if (city[["lat"]] < 0) {
+  #   lat <- paste0(format(abs(city[["lat"]]), digits = 6), "\u00B0 S")
+  # } else {
+  #   lat <- paste0(format(city[["lat"]], digits = 6), "\u00B0 N")
+  # }
+  # if (city[["long"]] < 0) {
+  #   long <- paste0(format(abs(city[["long"]]), digits = 6), "\u00B0 W")
+  # } else {
+  #   long <- paste0(format(city[["long"]], digits = 6), "\u00B0 E")
+  # }
+  # p <- p + shadowtext::geom_shadowtext(
+  #   data = data.frame(x = 0.5, y = c(0.93, 0.975), label = c(plotName, city[["country"]])),
+  #   mapping = ggplot2::aes(x = x, y = y, label = label),
+  #   size = c(themeOptions[["font"]][["scale"]] * 30, themeOptions[["font"]][["scale"]] * 20),
+  #   color = themeOptions[["colors"]][["text"]],
+  #   fontface = themeOptions[["font"]][["face"]],
+  #   family = themeOptions[["font"]][["family"]],
+  #   bg.colour = if (!is.null(themeOptions[["colors"]][["textshadow"]])) themeOptions[["colors"]][["textshadow"]] else themeOptions[["colors"]][["background"]]
+  # ) + shadowtext::geom_shadowtext(
+  #   data = data.frame(x = 0.97, y = 0.03, label = paste0(lat, " / ", long)),
+  #   mapping = ggplot2::aes(x = x, y = y, label = label),
+  #   size = themeOptions[["font"]][["scale"]] * 15,
+  #   color = themeOptions[["colors"]][["text"]],
+  #   family = themeOptions[["font"]][["family"]],
+  #   bg.colour = if (!is.null(themeOptions[["colors"]][["textshadow"]])) themeOptions[["colors"]][["textshadow"]] else themeOptions[["colors"]][["background"]],
+  #   hjust = 1
+  # )
   if (legend) {
     p <- .addLegend(p, bbox, themeOptions)
   }
